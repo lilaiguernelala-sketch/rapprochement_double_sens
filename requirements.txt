@@ -1,0 +1,6 @@
+pandas
+openpyxl
+pyyaml
+rapidfuzz
+streamlit
+altair==4.2.2
