@@ -3,12 +3,13 @@ import pandas as pd
 from io import BytesIO
 
 # Configuration de la page
-st.set_page_config(page_title="Comparateur CEGID vs PEGASE", layout="wide")
+st.set_page_config(page_title="💖💘 Comparateur CEGID vs PEGASE 💕💗", layout="wide")
 st.title("📊 Comparateur CEGID vs PEGASE")
 
 st.write("""
 Chargez vos fichiers Excel pour comparer les données dans la colonne `Numero`.
 L'application vous donnera un résumé et un fichier Excel avec les résultats.
+La colonne nni Numero ilaq attili la même di les deux fichiers, au lieu de Numéro negh Réference
 """)
 
 # Upload des fichiers
@@ -70,7 +71,7 @@ if fichier_cegid and fichier_pegase:
     })
 
     # Affichage
-    st.success("✅ Comparaison terminée")
+    st.success("Tekfa la comparaison")
     st.subheader("Résumé")
     st.dataframe(resume)
 
@@ -84,7 +85,7 @@ if fichier_cegid and fichier_pegase:
 
     # Bouton de téléchargement
     st.download_button(
-        label="📥 Télécharger le fichier Excel",
+        label="📥 Appuie dagui pour télécharger le fichier Excel",
         data=output,
         file_name="COMPARAISON_CEGID_PEGASE.xlsx",
         mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
