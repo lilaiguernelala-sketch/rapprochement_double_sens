@@ -4,3 +4,5 @@ pyyaml
 rapidfuzz
 streamlit
 altair==4.2.2
+streamlit==1.19.0
+
