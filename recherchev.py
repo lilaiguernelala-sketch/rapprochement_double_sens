@@ -3,8 +3,8 @@ import pandas as pd
 from io import BytesIO
 
 # Configuration de la page
-st.set_page_config(page_title="💖💘 Comparateur CEGID vs PEGASE 💕💗", layout="wide")
-st.title("📊 Comparateur CEGID vs PEGASE")
+st.set_page_config(page_title="RAPPROCHEMENT", layout="wide")
+st.title("💖💘 Comparateur CEGID vs PEGASE 💕💗")
 
 st.write("""
 Chargez vos fichiers Excel pour comparer les données dans la colonne `Numero`.
