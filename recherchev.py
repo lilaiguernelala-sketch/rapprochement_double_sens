@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 from io import BytesIO
 
+# Configuration de la page
 st.set_page_config(page_title="Comparateur CEGID vs PEGASE", layout="wide")
 st.title("📊 Comparateur CEGID vs PEGASE")
 
@@ -17,7 +18,6 @@ fichier_pegase = st.file_uploader("Upload fichier PEGASE", type=["xlsx"])
 colonne_cle = "Numero"
 
 if fichier_cegid and fichier_pegase:
-
     try:
         cegid = pd.read_excel(fichier_cegid)
         pegase = pd.read_excel(fichier_pegase)
@@ -25,7 +25,7 @@ if fichier_cegid and fichier_pegase:
         st.error(f"Erreur lors de la lecture des fichiers Excel : {e}")
         st.stop()
 
-    # Vérifier que la colonne clé existe
+    # Vérifier la présence de la colonne clé
     if colonne_cle not in cegid.columns:
         st.error(f"Colonne '{colonne_cle}' absente dans CEGID")
         st.stop()
@@ -37,13 +37,14 @@ if fichier_cegid and fichier_pegase:
     cegid[colonne_cle] = cegid[colonne_cle].astype(str).str.strip()
     pegase[colonne_cle] = pegase[colonne_cle].astype(str).str.strip()
 
+    # Comparaison
     set_cegid = set(cegid[colonne_cle])
     set_pegase = set(pegase[colonne_cle])
 
-    # Comparaison
     cegid["Existe_dans_PEGASE"] = cegid[colonne_cle].apply(
         lambda x: "trouvé" if x in set_pegase else "non trouvé"
     )
+
     pegase["Existe_dans_CEGID"] = pegase[colonne_cle].apply(
         lambda x: "trouvé" if x in set_cegid else "non trouvé"
     )
@@ -68,6 +69,7 @@ if fichier_cegid and fichier_pegase:
         ]
     })
 
+    # Affichage
     st.success("✅ Comparaison terminée")
     st.subheader("Résumé")
     st.dataframe(resume)
